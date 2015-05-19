@@ -23,7 +23,8 @@ exports.show = function(req, res) {
 
 // Creates a new <%= name %> in the DB.
 exports.create = function(req, res) {
-  <%= classedName %>.create(req.body, function(err, <%= name %>) {
+  var new_ = new <%= classedName %>(req.body);
+  new_.save(function(err, <%= name %>) {
     if(err) { return handleError(res, err); }
     return res.status(201).json(<%= name %>);
   });
