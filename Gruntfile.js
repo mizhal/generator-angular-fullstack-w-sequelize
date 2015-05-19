@@ -139,6 +139,7 @@ module.exports = function (grunt) {
         bootstrap: true,
         uibootstrap: true,
         mongoose: true,
+        sequelize: false,
         auth: true,
         oauth: ['googleAuth', 'twitterAuth'],
         socketio: true

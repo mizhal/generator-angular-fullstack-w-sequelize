@@ -133,6 +133,10 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
       message: "Would you like to use mongoDB with Mongoose for data modeling?"
     }, {
       type: "confirm",
+      name: "sequelize",
+      message: "Would you like to use Sequelize (postgresql, mysql) for data modeling?"
+    }, {
+      type: "confirm",
       name: "auth",
       message: "Would you scaffold out an authentication boilerplate?",
       when: function (answers) {
@@ -168,12 +172,13 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
       message: "Would you like to use socket.io?",
       // to-do: should not be dependent on mongoose
       when: function (answers) {
-        return answers.mongoose;
+        return answers.mongoose || answers.sequelize;
       },
       default: true
     }], function (answers) {
       if(answers.socketio) this.filters.socketio = true;
       if(answers.mongoose) this.filters.mongoose = true;
+      if(answers.sequelize) this.filters.sequelize = true;
       if(answers.auth) this.filters.auth = true;
       if(answers.oauth) {
         if(answers.oauth.length) this.filters.oauth = true;

@@ -9,6 +9,9 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');<% if (filters.mongoose) { %>
 var mongoose = require('mongoose');<% } %>
+<% if (filters.sequelize) %>
+var Sequelize = require('sequelize');
+<% } %>
 var config = require('./config/environment');
 <% if (filters.mongoose) { %>
 // Connect to database
@@ -20,8 +23,11 @@ mongoose.connection.on('error', function(err) {
 );
 // Populate DB with sample data
 if(config.seedDB) { require('./config/seed'); }
-
-<% } %>// Setup server
+<% } %>
+<% if (filters.sequelize)%>
+var sequelize = new Sequelize(process.env.PROJECT_DATABASE, process.env.PROJECT_DATABASE_USER, process.env.PROJECT_DATABASE_PASSWORD);
+<% } %>
+// Setup server
 var app = express();
 var server = require('http').createServer(app);<% if (filters.socketio) { %>
 var socketio = require('socket.io')(server, {
