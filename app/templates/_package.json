@@ -24,6 +24,7 @@
     "passport-twitter": "latest",<% } %><% if(filters.googleAuth) { %>
     "passport-google-oauth": "latest",<% } %>
     "composable-middleware": "^0.3.0",
+    "multer": "0.1.8",
     "connect-mongo": "^0.4.1"<% if(filters.socketio) { %>,
     "socket.io": "^1.0.6",
     "socket.io-client": "^1.0.6",
