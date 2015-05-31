@@ -13,6 +13,7 @@ var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 var errorHandler = require('errorhandler');
 var path = require('path');
+var multer  = require('multer');
 var config = require('./environment');<% if (filters.auth) { %>
 var passport = require('passport');<% } %><% if (filters.twitterAuth) { %>
 var session = require('express-session');
@@ -31,6 +32,8 @@ module.exports = function(app) {
   app.use(bodyParser.json());
   app.use(methodOverride());
   app.use(cookieParser());
+  app.use('/uploads', express.static(__dirname + "/uploads"));
+  app.use(multer({dest: './uploads/'}))
   <% if (filters.auth) { %>app.use(passport.initialize());<% } %><% if (filters.twitterAuth) { %>
 
   // Persist sessions with mongoStore
