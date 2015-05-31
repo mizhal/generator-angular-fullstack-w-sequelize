@@ -28,7 +28,14 @@
     "connect-mongo": "^0.4.1"<% if(filters.socketio) { %>,
     "socket.io": "^1.0.6",
     "socket.io-client": "^1.0.6",
-    "socketio-jwt": "^2.0.2"<% } %>
+    "socketio-jwt": "^2.0.2"<% } %><% if(filters.sequelize) { %>,
+    "sequelize": "3.1.1",
+    "sequelize-cli": "1.7.0",
+    "pg-hstore": "2.3.2",
+    "pg": "4.3.0",
+    "mysql": "2.7.0",
+    "sqlite3": "3.0.8"
+    <% } %>
   },
   "devDependencies": {
     "grunt": "~0.4.4",
