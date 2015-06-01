@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('lodash');<% if (filters.mongoose) { %>
+var _ = require('lodash');<% if (filters.mongoose || filters.sequelize) { %>
 var <%= classedName %> = require('./<%= name %>.model');<% } %>
 
 // Get list of <%= name %>s
