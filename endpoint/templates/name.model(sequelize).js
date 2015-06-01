@@ -7,20 +7,20 @@ var sequelize = require("../../components/sequelize_singleton");
 
 var <%= classedName %> = sequelize.define('User'. {
   name: {
-	type: Sequelize.STRING,
-	validate: {
-		notNull:true
-	}
+    type: Sequelize.STRING,
+    validate: {
+      notNull:true
+    }
   },
   info: {
-	type: Sequelize.STRING,
-	validate: {
-		notNull:true
-	}
+    type: Sequelize.STRING,
+    validate: {
+      notNull:true
+    }
   },
   state: {
-  	type: Sequelize.ENUM,
-	values: ['CREATED', 'CONFIRMED', 'ACTIVE', 'BANNED', 'DELETED']
+    type: Sequelize.ENUM,
+    values: ['CREATED', 'CONFIRMED', 'ACTIVE', 'BANNED', 'DELETED']
   }
 });
 
