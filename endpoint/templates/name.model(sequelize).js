@@ -5,7 +5,7 @@ var sequelize = require("../../components/sequelize_singleton");
 
 // doc: http://docs.sequelizejs.com/en/latest/docs/models-definition/
 
-var <%= classedName %> = sequelize.define('User'. {
+var <%= classedName %> = sequelize.define('<%= classedName %>', {
   name: {
     type: Sequelize.STRING,
     validate: {
