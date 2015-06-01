@@ -24,3 +24,4 @@ var <%= classedName %> = sequelize.define('<%= classedName %>', {
   }
 });
 
+module.exports = <%= classedName %>;

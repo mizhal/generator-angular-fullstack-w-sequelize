@@ -22,8 +22,7 @@ exports.register = function(socket) {
     onRemove(socket, obj);
     fn(null, obj);
   });
-<% } %>
-<% if (filters.mongoose) { %>
+<% } else if (filters.mongoose) { %>
   <%= classedName %>.schema.post('save', function (doc) {
     onSave(socket, doc);
   });

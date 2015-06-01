@@ -9,7 +9,7 @@ exports.index = function(req, res) {<% if (!filters.mongoose && !filters.sequeli
   <%= classedName %>.find(function (err, <%= name %>s) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(<%= name %>s);
-  });<% } %><% if(filters.sequelize){ %> 
+  });<% } else if(filters.sequelize){ %> 
     var page_size = 100
     var page_offset = (req.params.page || 0) * page_size;
     var language = req.query.lang;
@@ -76,8 +76,7 @@ exports.destroy = function(req, res) {
 
 function handleError(res, err) {
   return res.status(500).send(err);
-}<% } %>
-<% if(filters.sequelize){ %> 
+}<% } else if(filters.sequelize){ %> 
 // Get a single <%= name %>
 exports.show = function(req, res) {
   <%= classedName %>.findById(req.params.id)
@@ -93,7 +92,7 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   var new_ = <%= classedName %>.build(req.body);
   new_.save()
-    .then(function(err, <%= name %>) {
+    .then(function(<%= name %>) {
       return res.status(201).json(<%= name %>);
     }).catch(function(error){
       return handleError(res, error);
